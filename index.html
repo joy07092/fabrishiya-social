@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Follow Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      /* dark slate */
+      --card: #111827;
+      /* card background */
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --fb: #1877F2;
+      --ig: #E1306C;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #020617, var(--bg));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      max-width: 380px;
+      width: 100%;
+      padding: 28px 24px 32px;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      text-align: center;
+    }
+
+    .logo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      overflow: hidden;
+      /* 🔑 THIS is required */
+      background: #fff;
+      padding: 0;
+      /* remove padding */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* fills circle */
+      border-radius: 50%;
+      /* safety */
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 10px 0 6px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.fb {
+      background: linear-gradient(135deg, #1877F2, #145dd1);
+      box-shadow: 0 8px 18px rgba(24, 119, 242, 0.35);
+    }
+
+    .btn.ig {
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+      box-shadow: 0 8px 18px rgba(225, 48, 108, 0.35);
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="logo">
+      <img src="logo.png" alt="Brand logo">
+    </div>
+
+    <h1>Connect with us</h1>
+    <p>Choose your preferred platform</p>
+
+    <a class="btn fb" href="https://www.facebook.com/share/1DvE1UX9F2/" target="_blank" rel="noopener">
+      Facebook
+    </a>
+
+    <a class="btn ig" href="https://www.instagram.com/fabrishiya.lifestyle?igsh=MTN1d2tyZzd6NGkwbA==" target="_blank" rel="noopener">
+      Instagram
+    </a>
+
+    <footer>
+      © FABRISHIYA
+    </footer>
+  </div>
+</body>
+
+</html>
