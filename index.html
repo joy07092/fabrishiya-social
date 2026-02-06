@@ -2,76 +2,129 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Follow Us</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
     :root {
       --bg: #0f172a;
-      /* dark slate */
       --card: #111827;
-      /* card background */
       --text: #e5e7eb;
       --muted: #9ca3af;
       --fb: #1877F2;
       --ig: #E1306C;
-      --radius: 14px;
+      --radius: 16px;
     }
 
     * {
       box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #020617, var(--bg));
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
+      background: linear-gradient(-45deg, #020617, #0f172a, #1a1f36, #020617);
+      background-size: 400% 400%;
+      animation: bgAnim 15s ease infinite;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      color: var(--text);
+    }
+
+    @keyframes bgAnim {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .card {
       background: var(--card);
+      padding: 32px 28px;
+      border-radius: var(--radius);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
       max-width: 380px;
       width: 100%;
-      padding: 28px 24px 32px;
-      border-radius: var(--radius);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-      text-align: center;
+    }
+
+    /* Animated gradient border */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #1877F2);
+      background-size: 400% 400%;
+      animation: gradientAnim 8s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientAnim {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .logo {
-      width: 96px;
-      height: 96px;
+      width: 100px;
+      height: 100px;
       margin: 0 auto 16px;
       border-radius: 50%;
       overflow: hidden;
-      /* 🔑 THIS is required */
       background: #fff;
-      padding: 0;
-      /* remove padding */
       display: flex;
       align-items: center;
       justify-content: center;
+      animation: logoBounce 2s infinite alternate;
+    }
+
+    @keyframes logoBounce {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.05);
+      }
     }
 
     .logo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* fills circle */
       border-radius: 50%;
-      /* safety */
     }
 
     h1 {
-      font-size: 22px;
-      margin: 10px 0 6px;
+      font-size: 24px;
+      margin: 12px 0 6px;
       font-weight: 600;
     }
 
@@ -85,20 +138,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       width: 100%;
       padding: 14px;
       margin-bottom: 14px;
       border-radius: 12px;
       text-decoration: none;
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 600;
       color: #fff;
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+      position: relative;
     }
 
-    .btn:active {
-      transform: scale(0.98);
+    .btn img {
+      width: 24px;
+      height: 24px;
     }
 
     .btn.fb {
@@ -106,15 +161,58 @@
       box-shadow: 0 8px 18px rgba(24, 119, 242, 0.35);
     }
 
+    .btn.fb:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(24, 119, 242, 0.5);
+    }
+
     .btn.ig {
       background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
       box-shadow: 0 8px 18px rgba(225, 48, 108, 0.35);
+    }
+
+    .btn.ig:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(225, 48, 108, 0.5);
     }
 
     footer {
       margin-top: 18px;
       font-size: 12px;
       color: #6b7280;
+    }
+
+    /* Red corner glow */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow:
+        0 0 20px 2px rgba(255, 0, 0, 0.6),
+        0 0 40px 4px rgba(255, 0, 0, 0.4),
+        0 0 60px 6px rgba(255, 0, 0, 0.2);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -2;
+      animation: redGlow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes redGlow {
+      0% {
+        box-shadow: 0 0 10px 1px rgba(255, 0, 0, 0.4), 0 0 20px 2px rgba(255, 0, 0, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 25px 4px rgba(255, 0, 0, 0.6), 0 0 50px 8px rgba(255, 0, 0, 0.4);
+      }
+
+      100% {
+        box-shadow: 0 0 10px 1px rgba(255, 0, 0, 0.4), 0 0 20px 2px rgba(255, 0, 0, 0.2);
+      }
     }
   </style>
 </head>
@@ -129,11 +227,11 @@
     <p>Choose your preferred platform</p>
 
     <a class="btn fb" href="https://www.facebook.com/share/1DvE1UX9F2/" target="_blank" rel="noopener">
-      Facebook
+      <img src="facebook-logo.png" alt="Facebook"> Facebook
     </a>
 
-    <a class="btn ig" href="https://www.instagram.com/fabrishiya.lifestyle?igsh=MTN1d2tyZzd6NGkwbA%3D%3D" target="_blank" rel="noopener">
-      Instagram
+    <a class="btn ig" href="https://www.instagram.com/fabrishiya.lifestyle" target="_blank" rel="noopener">
+      <img src="instagram-logo.png" alt="Instagram"> Instagram
     </a>
 
     <footer>
@@ -143,6 +241,3 @@
 </body>
 
 </html>
-
-
-
